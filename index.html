@@ -1,83 +1,198 @@
-        <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white">
-            <i class="fa-solid fa-utensils text-sm"></i>
-          </div>
-          <div>
-            <div class="font-extrabold text-base tracking-tight leading-none">NutriGuia</div>
-            <div class="text-[11px] text-brand-100 mt-0.5">Olá, <span id="header-user-name" class="font-bold">Ermeson</span></div>
-          </div>
+        <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriGuia - Seu Guia Nutricional</title>
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --light-green: #4CAF50;
+            --accent-green: #81C784;
+            --bg-color: #F4F6F5;
+            --text-color: #333333;
+            --white: #FFFFFF;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 1.25rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+        main {
+            flex: 1;
+            padding: 1.25rem 1rem;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--white);
+            padding: 1.25rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 1.25rem;
+            border-left: 5px solid var(--light-green);
+        }
+        .card h2 {
+            color: var(--primary-green);
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .stat-box {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        .stat-box h3 {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+        .stat-box span {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-green);
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-green);
+            margin-right: 0.75rem;
+        }
+        .checklist-item label {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            bottom: 0;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        nav button.active {
+            color: var(--primary-green);
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NutriGuia</h1>
+        <p>Olá, Ermeson! Foco no plano de hoje.</p>
+    </header>
+
+    <main>
+        <div class="stats-grid">
+            <div class="stat-box">
+<h3>Água</h3>
+<span>1.5L / 2.5L</span>
+            </div>
+            <div class="stat-box">
+<h3>Calorias</h3>
+<span>1.850 kcal</span>
+            </div>
         </div>
-      </header>
 
-      <main class="flex-1 p-4 space-y-4">
-        <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm space-y-2">
-          <h3 class="font-bold text-xs text-gray-900">Painel Principal</h3>
-          <p class="text-xs text-gray-500">App pronto e configurado com sucesso no modo PWA verde!</p>
+        <div class="card">
+            <h2>Checklist de Refeições Diárias</h2>
+            <div class="checklist-item">
+                <input type="checkbox" id="ref1" checked>
+                <label for="ref1">Café da Manhã (Ovos e Frutas)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ref2" checked>
+                <label for="ref2">Almoço (Frango, Arroz e Salada)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ref3">
+                <label for="ref3">Lanche da Tarde (Iogurte e Castanhas)</label>
+            </div>
+            <div class="checklist-item">
+                <input type="checkbox" id="ref4">
+                <label for="ref4">Jantar (Sopa de Legumes / Proteína)</label>
+            </div>
         </div>
-      </main>
-    </div>
 
-  </div>
+        <div class="card">
+            <h2>Dica Nutricional do Dia</h2>
+            <p>Mantenha a ingestão de água constante ao longo do dia para otimizar o metabolismo e garantir o rendimento nos treinos.</p>
+        </div>
+    </main>
 
-  <script>
-    let currentStep = 1;
-    let selectedGoalVal = 'reeducacao';
+    <nav>
+        <button class="active">🏠 Início</button>
+        <button>🥗 Receitas</button>
+        <button>📊 Progresso</button>
+        <button>⚙️ Ajustes</button>
+    </nav>
 
-    function selectGoal(goal, el) {
-      selectedGoalVal = goal;
-      document.querySelectorAll('.goal-card').forEach(card => {
-        card.className = "goal-card border border-gray-200 bg-white p-4 rounded-2xl cursor-pointer hover:border-brand-300 transition-all";
-      });
-      el.className = "goal-card border-2 border-brand-500 bg-brand-50/40 p-4 rounded-2xl cursor-pointer transition-all";
-    }
+    <footer>
+        &copy; 2026 NutriGuia. Todos os direitos reservados.
+    </footer>
 
-    function recalculateWaterGoal() {
-      const w = parseFloat(document.getElementById('input-weight').value) || 70;
-      const totalWater = Math.round(w * 35);
-      document.getElementById('calculated-water-display').innerText = totalWater + 'ml/dia';
-      document.getElementById('summary-water').innerText = totalWater + 'ml';
-    }
-
-    function nextStep() {
-      if (currentStep === 1) {
-        const name = document.getElementById('input-name').value || 'Ermeson';
-        document.getElementById('header-user-name').innerText = name;
-        document.getElementById('step-1').classList.add('hidden');
-        document.getElementById('step-2').classList.remove('hidden');
-        document.getElementById('btn-back').classList.remove('hidden');
-        document.getElementById('step-badge').innerText = 'Passo 2 de 3';
-        currentStep = 2;
-      } else if (currentStep === 2) {
-        const wake = document.getElementById('input-wake').value || '04:30';
-        document.getElementById('summary-wake').innerText = wake;
-        document.getElementById('step-2').classList.add('hidden');
-        document.getElementById('step-3').classList.remove('hidden');
-        document.getElementById('step-badge').innerText = 'Passo 3 de 3';
-        document.getElementById('btn-next-text').innerText = 'Começar Agora';
-        currentStep = 3;
-      } else if (currentStep === 3) {
-        document.getElementById('onboarding-screen').classList.add('hidden');
-        document.getElementById('main-app').classList.remove('hidden');
-        document.getElementById('main-app').classList.add('flex');
-      }
-    }
-
-    function prevStep() {
-      if (currentStep === 2) {
-        document.getElementById('step-2').classList.add('hidden');
-        document.getElementById('step-1').classList.remove('hidden');
-        document.getElementById('btn-back').classList.add('hidden');
-        document.getElementById('step-badge').innerText = 'Passo 1 de 3';
-        currentStep = 1;
-      } else if (currentStep === 3) {
-        document.getElementById('step-3').classList.add('hidden');
-        document.getElementById('step-2').classList.remove('hidden');
-        document.getElementById('step-badge').innerText = 'Passo 2 de 3';
-        document.getElementById('btn-next-text').innerText = 'Continuar';
-        currentStep = 2;
-      }
-    }
-  </script>
 </body>
 </html>
-            
