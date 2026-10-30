@@ -1,0 +1,83 @@
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white">
+            <i class="fa-solid fa-utensils text-sm"></i>
+          </div>
+          <div>
+            <div class="font-extrabold text-base tracking-tight leading-none">NutriGuia</div>
+            <div class="text-[11px] text-brand-100 mt-0.5">Olá, <span id="header-user-name" class="font-bold">Ermeson</span></div>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1 p-4 space-y-4">
+        <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm space-y-2">
+          <h3 class="font-bold text-xs text-gray-900">Painel Principal</h3>
+          <p class="text-xs text-gray-500">App pronto e configurado com sucesso no modo PWA verde!</p>
+        </div>
+      </main>
+    </div>
+
+  </div>
+
+  <script>
+    let currentStep = 1;
+    let selectedGoalVal = 'reeducacao';
+
+    function selectGoal(goal, el) {
+      selectedGoalVal = goal;
+      document.querySelectorAll('.goal-card').forEach(card => {
+        card.className = "goal-card border border-gray-200 bg-white p-4 rounded-2xl cursor-pointer hover:border-brand-300 transition-all";
+      });
+      el.className = "goal-card border-2 border-brand-500 bg-brand-50/40 p-4 rounded-2xl cursor-pointer transition-all";
+    }
+
+    function recalculateWaterGoal() {
+      const w = parseFloat(document.getElementById('input-weight').value) || 70;
+      const totalWater = Math.round(w * 35);
+      document.getElementById('calculated-water-display').innerText = totalWater + 'ml/dia';
+      document.getElementById('summary-water').innerText = totalWater + 'ml';
+    }
+
+    function nextStep() {
+      if (currentStep === 1) {
+        const name = document.getElementById('input-name').value || 'Ermeson';
+        document.getElementById('header-user-name').innerText = name;
+        document.getElementById('step-1').classList.add('hidden');
+        document.getElementById('step-2').classList.remove('hidden');
+        document.getElementById('btn-back').classList.remove('hidden');
+        document.getElementById('step-badge').innerText = 'Passo 2 de 3';
+        currentStep = 2;
+      } else if (currentStep === 2) {
+        const wake = document.getElementById('input-wake').value || '04:30';
+        document.getElementById('summary-wake').innerText = wake;
+        document.getElementById('step-2').classList.add('hidden');
+        document.getElementById('step-3').classList.remove('hidden');
+        document.getElementById('step-badge').innerText = 'Passo 3 de 3';
+        document.getElementById('btn-next-text').innerText = 'Começar Agora';
+        currentStep = 3;
+      } else if (currentStep === 3) {
+        document.getElementById('onboarding-screen').classList.add('hidden');
+        document.getElementById('main-app').classList.remove('hidden');
+        document.getElementById('main-app').classList.add('flex');
+      }
+    }
+
+    function prevStep() {
+      if (currentStep === 2) {
+        document.getElementById('step-2').classList.add('hidden');
+        document.getElementById('step-1').classList.remove('hidden');
+        document.getElementById('btn-back').classList.add('hidden');
+        document.getElementById('step-badge').innerText = 'Passo 1 de 3';
+        currentStep = 1;
+      } else if (currentStep === 3) {
+        document.getElementById('step-3').classList.add('hidden');
+        document.getElementById('step-2').classList.remove('hidden');
+        document.getElementById('step-badge').innerText = 'Passo 2 de 3';
+        document.getElementById('btn-next-text').innerText = 'Continuar';
+        currentStep = 2;
+      }
+    }
+  </script>
+</body>
+</html>
+            
